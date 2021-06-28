@@ -1,9 +1,9 @@
 import React from 'react';
-import ChatContainer from './Container/ChatContainer';
+import ChatScreenContainer from './Container/ChatScreenContainer';
 
 const App = () => (
   <div className="App">
-    <ChatContainer />
+    <ChatScreenContainer />
   </div>
 );
 

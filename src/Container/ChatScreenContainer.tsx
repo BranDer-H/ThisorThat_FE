@@ -3,7 +3,7 @@ import ChatScreen from '../Presenter/ChatScreen'
 
 import { Message } from '../interface/types'
 
-const ChatContainer = () => {
+const ChatScreenContainer = () => {
     const [msgHistory, setMsgHistory] = useState<Message[]>([]);
     const [message, setMessage] = useState('');
 
@@ -16,4 +16,4 @@ const ChatContainer = () => {
     )
 }
 
-export default ChatContainer;
+export default ChatScreenContainer;
