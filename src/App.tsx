@@ -1,7 +1,10 @@
 import React from 'react';
+import ChatContainer from './Container/ChatContainer';
 
-function App() {
-  return <div className="App">Test</div>;
-}
+const App = () => (
+  <div className="App">
+    <ChatContainer />
+  </div>
+);
 
 export default App;
