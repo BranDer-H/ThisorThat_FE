@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
+
 import ChatScreenContainer from './Container/ChatScreenContainer';
 import Login from './Presenter/Login';
 
 const App = () => {
-  const [loginState, setLoginState] = useState<boolean>(false);
+  const [loginState, setLoginState] = useState<Boolean>(false);
 
   return (
     <div className="App">
-      {/* {loginState ? <ChatScreenContainer /> : <Login />} */}
-      <ChatScreenContainer />
+      {loginState === false ? (
+        <Login setLoginState={setLoginState} />
+      ) : (
+        <ChatScreenContainer />
+      )}
     </div>
   );
 };

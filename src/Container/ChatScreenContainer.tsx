@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
 import randomColor from 'randomcolor';
+import userNickName from '../atom/Atoms';
 import ChatScreen from '../Presenter/ChatScreen';
 
 import { Message } from '../interface/types';
 
 const ChatScreenContainer = () => {
+  const [userNickname, setUserNickname] = useRecoilState(userNickName);
+
   const [msgHistory, setMsgHistory] = useState<Message[]>([]);
   const [message, setMessage] = useState<string>('');
-  const [userName, setUserName] = useState<string>('');
   const [userColor, setUserColor] = useState(() => randomColor());
 
   const onRegisterNewMsg = (msgInfo: Message) => {
@@ -25,8 +28,8 @@ const ChatScreenContainer = () => {
       onRegisterNewMsg={onRegisterNewMsg}
       message={message}
       setMessage={setMessage}
-      userName={userName}
-      setUserName={setUserName}
+      userName={userNickname}
+      setUserName={setUserNickname}
       userColor={userColor}
     />
   );

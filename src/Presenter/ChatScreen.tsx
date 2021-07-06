@@ -58,8 +58,6 @@ const ChatScreen = ({
 
   return (
     <>
-      <Input.Search onChange={(e) => setUserName(e.target.value)} />
-      <hr />
       <ChatContents>
         {msgHistory.map((msg: Message) => (
           <ChatBlock key={uuidv4()}>
