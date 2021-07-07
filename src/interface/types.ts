@@ -1,6 +1,7 @@
 export interface Message {
   userName: string;
   content: string;
+  timeStamp: number;
 }
 
 export interface ChatProps {
@@ -9,7 +10,6 @@ export interface ChatProps {
   message: string;
   setMessage: Function;
   userName: string;
-  setUserName: Function;
   userColor: string;
   // useFinalInputMsg: () => void;
 }

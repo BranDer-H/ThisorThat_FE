@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
+import moment from 'moment';
+import 'moment/locale/ko';
 import { Input, Avatar } from 'antd';
 import { ChatProps, Message } from '../interface/types';
 
@@ -42,18 +44,29 @@ const ChatUserContents = styled.div`
   }
 `;
 
+const ChatTime = styled.time`
+  margin: 1.55rem 0 0 0.5rem;
+  justify-content: center;
+  font-size: 14px;
+`;
+
 const ChatScreen = ({
   msgHistory,
   message,
   onRegisterNewMsg,
   setMessage,
   userName,
-  setUserName,
   userColor,
 }: ChatProps) => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     setMessage(e.target.value);
+  };
+
+  const convertTime = (time: number) => {
+    const date = new Date(time);
+    const hour = Number(`0${String(date.getHours())}`.slice(-2));
+    const minute = `0${String(date.getMinutes())}`.slice(-2);
+    return hour > 12 ? `${hour - 12} : ${minute} pm` : `${hour} : ${minute} am`;
   };
 
   return (
@@ -65,6 +78,7 @@ const ChatScreen = ({
               style={{
                 backgroundColor: userColor,
                 verticalAlign: 'middle',
+                marginTop: '0.3rem',
                 marginLeft: '0.3rem',
               }}
               size={60}
@@ -74,7 +88,10 @@ const ChatScreen = ({
             </Avatar>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <ChatUserName>{msg.userName}</ChatUserName>
-              <ChatUserContents>{msg.content}</ChatUserContents>
+              <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <ChatUserContents>{msg.content}</ChatUserContents>
+                <ChatTime>{convertTime(msg.timeStamp)}</ChatTime>
+              </div>
             </div>
           </ChatBlock>
         ))}
@@ -86,10 +103,14 @@ const ChatScreen = ({
         enterButton="Send"
         onChange={onChange}
         onPressEnter={() => {
-          const tmp: Message = {} as Message;
-          tmp.userName = userName;
-          tmp.content = message;
-          onRegisterNewMsg(tmp);
+          if (message.length > 0) {
+            const nowTime = Date.now();
+            const newMsgObj: Message = {} as Message;
+            newMsgObj.userName = userName;
+            newMsgObj.content = message;
+            newMsgObj.timeStamp = nowTime;
+            onRegisterNewMsg(newMsgObj);
+          }
         }}
         style={{ position: 'fixed', bottom: '0' }}
       />

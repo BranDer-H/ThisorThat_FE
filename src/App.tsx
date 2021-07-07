@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import ChatScreenContainer from './Container/ChatScreenContainer';
-import Login from './Presenter/Login';
+import LoginContainer from './Container/LoginContainer';
 
 const App = () => {
   const [loginState, setLoginState] = useState<Boolean>(false);
@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div className="App">
       {loginState === false ? (
-        <Login setLoginState={setLoginState} />
+        <LoginContainer setLoginState={setLoginState} />
       ) : (
         <ChatScreenContainer />
       )}
