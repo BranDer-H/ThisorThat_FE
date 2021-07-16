@@ -32,18 +32,18 @@ const LoginSubmit = styled.input`
   display: none;
 `;
 
-const Login = ({ userNickname, setUserNickname, onRegisterNickName }: any) => {
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserNickname(e.target.value);
-  };
-
-  return (
-    <LoginForm onSubmit={onRegisterNickName}>
-      <LoginTitle>닉네임을 입력하세요.</LoginTitle>
-      <LoginInput value={userNickname} autoFocus onChange={onChange} />
-      <LoginSubmit type="submit" value="" />
-    </LoginForm>
-  );
-};
+const Login = ({ userNickname, setUserNickname, onRegisterNickName }: any) => (
+  <LoginForm onSubmit={onRegisterNickName}>
+    <LoginTitle>닉네임을 입력하세요.</LoginTitle>
+    <LoginInput
+      value={userNickname}
+      autoFocus
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        setUserNickname(e.target.value)
+      }
+    />
+    <LoginSubmit type="submit" value="" />
+  </LoginForm>
+);
 
 export default Login;
