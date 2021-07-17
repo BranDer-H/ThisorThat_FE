@@ -1,4 +1,10 @@
+// interface MessageType {
+//   myMsg: boolean;
+//   enterMsg: boolean;
+// }
+
 export interface Message {
+  enterMsg: boolean;
   userName: string;
   content: string;
   timeStamp: number;
