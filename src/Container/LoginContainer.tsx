@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import userNickName from '../atom/Atoms';
+import { userNickname, msgHistory } from '../atom/Atoms';
 
 import Login from '../Presenter/Login';
 
-export const socket = new WebSocket(`ws://localhost:8080/chat`);
+export const socket = new WebSocket(`ws://3.37.234.201:8080/chat`);
 
 const LoginContainer = ({ setLoginState }: any) => {
-  const [userLoginName, setUserNickname] = useRecoilState(userNickName);
+  const [userLoginName, setUserNickname] = useRecoilState(userNickname);
+  const [msgHistoryArr, setMsgHistory] = useRecoilState(msgHistory);
 
   const onRegisterNickName = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,7 +22,6 @@ const LoginContainer = ({ setLoginState }: any) => {
     );
 
     socket.onmessage = (evt: MessageEvent) => {
-      console.log(evt);
       const response = JSON.parse(evt.data);
       switch (response.messageType) {
         case 'ERROR':
@@ -32,6 +32,16 @@ const LoginContainer = ({ setLoginState }: any) => {
           break;
       }
     };
+
+    setMsgHistory([
+      ...msgHistoryArr,
+      {
+        enterMsg: true,
+        userName: userLoginName,
+        content: '',
+        timeStamp: 0,
+      },
+    ]);
   };
 
   useEffect(() => {
