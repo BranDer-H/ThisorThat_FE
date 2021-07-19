@@ -89,6 +89,14 @@ const ChatEnterInform = styled.div`
   border-radius: 30px;
 `;
 
+const Chatinput = styled(Input.Search)`
+  & button {
+    background-color: yellow;
+    border: 1px solid yellow;
+    color: black;
+  }
+`;
+
 const ChatScreen = ({
   msgHistory,
   message,
@@ -119,7 +127,7 @@ const ChatScreen = ({
               👋 {msg.userName} 님께서 입장하셨습니다.
             </ChatEnterInform>
           ) : (
-            (curUserName === msg.userName && (
+            (curUserName !== msg.userName && (
               <OthersChatBlock key={uuidv4()}>
                 <Avatar
                   style={{
@@ -142,7 +150,7 @@ const ChatScreen = ({
                 </div>
               </OthersChatBlock>
             )) || (
-              <MyChatBlock>
+              <MyChatBlock key={uuidv4()}>
                 <div
                   style={{
                     display: 'flex',
@@ -158,10 +166,11 @@ const ChatScreen = ({
           )
         )}
       </ChatContents>
-      <Input.Search
+      <Chatinput
         placeholder="Input your messages..."
         value={message}
         allowClear
+        size="large"
         enterButton="Send"
         onChange={onChange}
         onPressEnter={() => {

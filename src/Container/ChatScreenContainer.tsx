@@ -13,7 +13,7 @@ const ChatScreenContainer = () => {
   const [msgHistoryArr, setMsgHistory] = useRecoilState(msgHistory);
 
   const [message, setMessage] = useState<string>('');
-  const [userColor, setUserColor] = useState(() => randomColor());
+  const userColor = randomColor();
 
   const onRegisterNewMsg = (msgInfo: Message) => {
     const newMessage: Message = msgInfo;
@@ -23,11 +23,11 @@ const ChatScreenContainer = () => {
         name: newMessage.userName,
         messageType: 'CHAT',
         content: newMessage.content,
+        timestamp: newMessage.timeStamp,
       })
     );
 
     setMessage('');
-    setMsgHistory([...msgHistoryArr, newMessage]);
   };
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const ChatScreenContainer = () => {
               enterMsg: false,
               userName: response.name,
               content: response.content,
-              timeStamp: 0,
+              timeStamp: response.timestamp,
             },
           ]);
       }
