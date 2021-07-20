@@ -20,34 +20,35 @@ const LoginContainer = ({ setLoginState }: any) => {
         content: '새로운 유저가 닉네임 설정을 시도중입니다.',
       })
     );
+  };
 
-    socket.onmessage = (evt: MessageEvent) => {
-      const response = JSON.parse(evt.data);
-      switch (response.messageType) {
-        case 'ERROR':
-          setLoginState(false);
-          break;
-        case 'JOIN':
-          setLoginState(true);
-          break;
-      }
-    };
-
-    setMsgHistory([
-      ...msgHistoryArr,
-      {
-        enterMsg: true,
-        userName: userLoginName,
-        content: '',
-        timeStamp: 0,
-      },
-    ]);
+  socket.onmessage = (evt: MessageEvent) => {
+    const response = JSON.parse(evt.data);
+    switch (response.messageType) {
+      case 'ERROR':
+        setLoginState(false);
+        /* eslint-disable */
+        alert('중복된 닉네임입니다! 다시 입력해주세요.');
+        break;
+      case 'JOIN':
+        setLoginState(true);
+        setMsgHistory([
+          ...msgHistoryArr,
+          {
+            informMsg: true,
+            enterMsg: true,
+            userName: userLoginName,
+            content: '',
+            timeStamp: 0,
+          },
+        ]);
+        break;
+    }
   };
 
   useEffect(() => {
     socket.onopen = () => {
       console.log('Connected!');
-      // socket.send('Hello Brandon! This is Derek, sending message from Client.')
     };
   }, []);
 

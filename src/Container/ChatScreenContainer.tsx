@@ -13,7 +13,7 @@ const ChatScreenContainer = () => {
   const [msgHistoryArr, setMsgHistory] = useRecoilState(msgHistory);
 
   const [message, setMessage] = useState<string>('');
-  const userColor = randomColor();
+  const [userColor, setUserColor] = useState(() => randomColor());
 
   const onRegisterNewMsg = (msgInfo: Message) => {
     const newMessage: Message = msgInfo;
@@ -38,10 +38,23 @@ const ChatScreenContainer = () => {
           setMsgHistory([
             ...msgHistoryArr,
             {
+              informMsg: false,
               enterMsg: false,
               userName: response.name,
               content: response.content,
               timeStamp: response.timestamp,
+            },
+          ]);
+          break;
+        case 'JOIN':
+          setMsgHistory([
+            ...msgHistoryArr,
+            {
+              informMsg: true,
+              enterMsg: true,
+              userName: response.content,
+              content: '',
+              timeStamp: 0,
             },
           ]);
       }
