@@ -1,5 +1,4 @@
 export interface Message {
-  informMsg: boolean;
   enterMsg: boolean;
   userName: string;
   content: string;
