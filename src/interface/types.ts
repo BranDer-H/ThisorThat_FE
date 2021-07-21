@@ -12,6 +12,4 @@ export interface ChatProps {
   message: string;
   setMessage: Function;
   userName: string;
-  userColor: string;
-  // useFinalInputMsg: () => void;
 }

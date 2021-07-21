@@ -104,7 +104,6 @@ const ChatScreen = ({
   onRegisterNewMsg,
   setMessage,
   userName,
-  userColor,
 }: ChatProps) => {
   const curUserName = useRecoilValue(userNickname);
 
@@ -144,8 +143,10 @@ const ChatScreen = ({
             : (curUserName !== msg.userName && (
                 <OthersChatBlock key={uuidv4()}>
                   <Avatar
+                    src={`./${msg.userName.charCodeAt(0) % 7}.jpg`}
+                    shape="square"
                     style={{
-                      backgroundColor: userColor,
+                      backgroundColor: 'slategray',
                       verticalAlign: 'middle',
                       marginTop: '0.3rem',
                       marginLeft: '0.3rem',
