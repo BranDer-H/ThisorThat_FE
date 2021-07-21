@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
@@ -13,7 +13,6 @@ import 'antd/dist/antd.css';
 const ChatContents = styled.div`
   display: flex;
   flex-direction: column;
-  padding-bottom: 2.5rem;
 `;
 
 const MyChatBlock = styled.div`
@@ -119,71 +118,58 @@ const ChatScreen = ({
     return hour > 12 ? `${hour - 12} : ${minute} pm` : `${hour} : ${minute} am`;
   };
 
-  useEffect(() => {
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      left: 0,
-      behavior: 'smooth',
-    });
-  });
-
   return (
     <>
       <ChatContents>
         {msgHistory.map((msg: Message) =>
-          msg.informMsg === true
-            ? (msg.enterMsg && (
-                <ChatEnterInform key={uuidv4()}>
-                  👋 {msg.userName} 님께서 입장하셨습니다.
-                </ChatEnterInform>
-              )) || (
-                <ChatEnterInform key={uuidv4()}>
-                  👋 {msg.userName} 님께서 나가셨습니다.
-                </ChatEnterInform>
-              )
-            : (curUserName !== msg.userName && (
-                <OthersChatBlock key={uuidv4()}>
-                  <Avatar
-                    style={{
-                      backgroundColor: userColor,
-                      verticalAlign: 'middle',
-                      marginTop: '0.3rem',
-                      marginLeft: '0.3rem',
-                    }}
-                    size={40}
-                    gap={4}
-                  >
-                    {msg.userName.substr(0, 1)}
-                  </Avatar>
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <ChatUserName>{msg.userName}</ChatUserName>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                      <ChatUserContents>{msg.content}</ChatUserContents>
-                      <ChatTime>{convertTime(msg.timeStamp)}</ChatTime>
-                    </div>
-                  </div>
-                </OthersChatBlock>
-              )) || (
-                <MyChatBlock key={uuidv4()}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'flex-end',
-                      flexDirection: 'row',
-                    }}
-                  >
+          msg.enterMsg === true ? (
+            <ChatEnterInform key={uuidv4()}>
+              👋 {msg.userName} 님께서 입장하셨습니다.
+            </ChatEnterInform>
+          ) : (
+            (curUserName !== msg.userName && (
+              <OthersChatBlock key={uuidv4()}>
+                <Avatar
+                  style={{
+                    backgroundColor: userColor,
+                    verticalAlign: 'middle',
+                    marginTop: '0.3rem',
+                    marginLeft: '0.3rem',
+                  }}
+                  size={40}
+                  gap={4}
+                >
+                  {msg.userName.substr(0, 1)}
+                </Avatar>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <ChatUserName>{msg.userName}</ChatUserName>
+                  <div style={{ display: 'flex', flexDirection: 'row' }}>
+                    <ChatUserContents>{msg.content}</ChatUserContents>
                     <ChatTime>{convertTime(msg.timeStamp)}</ChatTime>
-                    <ChatMyContents>{msg.content}</ChatMyContents>
                   </div>
-                </MyChatBlock>
-              )
+                </div>
+              </OthersChatBlock>
+            )) || (
+              <MyChatBlock key={uuidv4()}>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                    flexDirection: 'row',
+                  }}
+                >
+                  <ChatTime>{convertTime(msg.timeStamp)}</ChatTime>
+                  <ChatMyContents>{msg.content}</ChatMyContents>
+                </div>
+              </MyChatBlock>
+            )
+          )
         )}
       </ChatContents>
       <Chatinput
         placeholder="Input your messages..."
         value={message}
         allowClear
-        autoFocus
         size="large"
         enterButton="Send"
         onChange={onChange}
