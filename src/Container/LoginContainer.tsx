@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { userNickname, msgHistory } from '../atom/Atoms';
 
 import Login from '../Presenter/Login';

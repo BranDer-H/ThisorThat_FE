@@ -18,7 +18,7 @@ const LoginTitle = styled.div`
   font-size: 1.5rem;
   margin: 0.5rem;
   margin-bottom: 2.5rem;
-  color: white;
+  color: silver;
 `;
 
 const LoginInput = styled(Input)`
@@ -26,6 +26,8 @@ const LoginInput = styled(Input)`
   font-weight: 400;
   text-align: center;
   width: 100%;
+  color: black;
+  background-color: slategray;
 `;
 
 const LoginSubmit = styled.input`

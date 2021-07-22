@@ -42,10 +42,10 @@ const ChatUserContents = styled.div`
   position: relative;
   padding: 0.5rem 1rem;
   margin-left: 1.3rem;
-  background: yellow;
+  background: slategray;
   border-radius: 10px;
   &:after {
-    border-top: 10px solid yellow;
+    border-top: 10px solid slategray;
     border-left: 15px solid transparent;
     border-right: 0px solid transparent;
     border-bottom: 0px solid transparent;
@@ -60,10 +60,10 @@ const ChatMyContents = styled.div`
   position: relative;
   padding: 0.5rem 1rem;
   margin: 0 1.3rem 0 0.8rem;
-  background: yellow;
+  background: slategray;
   border-radius: 10px;
   &:after {
-    border-top: 10px solid yellow;
+    border-top: 10px solid slategray;
     border-left: 0px solid transparent;
     border-right: 15px solid transparent;
     border-bottom: 0px solid transparent;
@@ -78,13 +78,14 @@ const ChatTime = styled.time`
   margin: 1.55rem 0 0 0.5rem;
   justify-content: center;
   font-size: 14px;
+  color: steelblue;
 `;
 
 const ChatEnterInform = styled.div`
-  color: white;
+  color: black;
   font-family: 'cookie';
-  font-weight: 500;
-  background-color: slategray;
+  font-weight: 600;
+  background-color: gainsboro;
   margin: 1rem auto;
   padding: 0.8rem;
   border-radius: 30px;
@@ -133,11 +134,11 @@ const ChatScreen = ({
           msg.informMsg === true
             ? (msg.enterMsg && (
                 <ChatEnterInform key={uuidv4()}>
-                  👋 {msg.userName} 님께서 입장하셨습니다.
+                  👋 {msg.userName} 마시멜로우가 꼬챙이에 끼워졌습니다.
                 </ChatEnterInform>
               )) || (
                 <ChatEnterInform key={uuidv4()}>
-                  👋 {msg.userName} 님께서 나가셨습니다.
+                  👋 {msg.userName} 마시멜로우가 녹아 없어졌습니다.
                 </ChatEnterInform>
               )
             : (curUserName !== msg.userName && (
