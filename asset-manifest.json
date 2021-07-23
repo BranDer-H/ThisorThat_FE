@@ -1,26 +1,28 @@
 {
   "files": {
-    "main.css": "/thisorthat_fe/static/css/main.c9b273fc.chunk.css",
-    "main.js": "/thisorthat_fe/static/js/main.85f3ce4b.chunk.js",
-    "main.js.map": "/thisorthat_fe/static/js/main.85f3ce4b.chunk.js.map",
-    "runtime-main.js": "/thisorthat_fe/static/js/runtime-main.5ec728b1.js",
-    "runtime-main.js.map": "/thisorthat_fe/static/js/runtime-main.5ec728b1.js.map",
-    "static/css/2.10bc9b17.chunk.css": "/thisorthat_fe/static/css/2.10bc9b17.chunk.css",
-    "static/js/2.40e52911.chunk.js": "/thisorthat_fe/static/js/2.40e52911.chunk.js",
-    "static/js/2.40e52911.chunk.js.map": "/thisorthat_fe/static/js/2.40e52911.chunk.js.map",
-    "static/js/3.69920264.chunk.js": "/thisorthat_fe/static/js/3.69920264.chunk.js",
-    "static/js/3.69920264.chunk.js.map": "/thisorthat_fe/static/js/3.69920264.chunk.js.map",
+    "main.css": "/thisorthat_fe/static/css/main.424d9979.chunk.css",
+    "main.js": "/thisorthat_fe/static/js/main.d7aa74ba.chunk.js",
+    "main.js.map": "/thisorthat_fe/static/js/main.d7aa74ba.chunk.js.map",
+    "runtime-main.js": "/thisorthat_fe/static/js/runtime-main.a75db124.js",
+    "runtime-main.js.map": "/thisorthat_fe/static/js/runtime-main.a75db124.js.map",
+    "static/css/2.ecfb3f68.chunk.css": "/thisorthat_fe/static/css/2.ecfb3f68.chunk.css",
+    "static/js/2.6b3b95a7.chunk.js": "/thisorthat_fe/static/js/2.6b3b95a7.chunk.js",
+    "static/js/2.6b3b95a7.chunk.js.map": "/thisorthat_fe/static/js/2.6b3b95a7.chunk.js.map",
+    "static/js/3.09cd0b44.chunk.js": "/thisorthat_fe/static/js/3.09cd0b44.chunk.js",
+    "static/js/3.09cd0b44.chunk.js.map": "/thisorthat_fe/static/js/3.09cd0b44.chunk.js.map",
     "index.html": "/thisorthat_fe/index.html",
-    "static/css/2.10bc9b17.chunk.css.map": "/thisorthat_fe/static/css/2.10bc9b17.chunk.css.map",
-    "static/css/main.c9b273fc.chunk.css.map": "/thisorthat_fe/static/css/main.c9b273fc.chunk.css.map",
-    "static/js/2.40e52911.chunk.js.LICENSE.txt": "/thisorthat_fe/static/js/2.40e52911.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/thisorthat_fe/static/media/cookierun.52560075.TTF"
+    "precache-manifest.37a1637f16b2b3c0a8071413b4b88b55.js": "/thisorthat_fe/precache-manifest.37a1637f16b2b3c0a8071413b4b88b55.js",
+    "service-worker.js": "/thisorthat_fe/service-worker.js",
+    "static/css/2.ecfb3f68.chunk.css.map": "/thisorthat_fe/static/css/2.ecfb3f68.chunk.css.map",
+    "static/css/main.424d9979.chunk.css.map": "/thisorthat_fe/static/css/main.424d9979.chunk.css.map",
+    "static/js/2.6b3b95a7.chunk.js.LICENSE.txt": "/thisorthat_fe/static/js/2.6b3b95a7.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/thisorthat_fe/static/media/cookierun.b6c8137d.TTF"
   },
   "entrypoints": [
-    "static/js/runtime-main.5ec728b1.js",
-    "static/css/2.10bc9b17.chunk.css",
-    "static/js/2.40e52911.chunk.js",
-    "static/css/main.c9b273fc.chunk.css",
-    "static/js/main.85f3ce4b.chunk.js"
+    "static/js/runtime-main.a75db124.js",
+    "static/css/2.ecfb3f68.chunk.css",
+    "static/js/2.6b3b95a7.chunk.js",
+    "static/css/main.424d9979.chunk.css",
+    "static/js/main.d7aa74ba.chunk.js"
   ]
 }
