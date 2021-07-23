@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,WACE,oBAAqB,CACrB,qEACF","file":"main.1e85a632.chunk.css","sourcesContent":["@font-face {\n  font-family: 'cookie';\n  src: url('./font/cookierun.TTF');\n}\n"]}
