@@ -9,10 +9,7 @@ const App = () => {
   const [videoStart, setVideoStart] = useState(false);
 
   return (
-    <div
-      className="App"
-      style={{ width: '100%',  overflow: 'hidden' }}
-    >
+    <div className="App" style={{ width: '100%', overflow: 'hidden' }}>
       <ReactPlayer
         url="http://www.youtube.com/watch?v=NUKKzdVy0EI"
         playing

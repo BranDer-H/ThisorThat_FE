@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import 'moment/locale/ko';
 import { Input, Avatar } from 'antd';
@@ -9,6 +9,18 @@ import { ChatProps, Message } from '../interface/types';
 import { userNickname } from '../atom/Atoms';
 
 import 'antd/dist/antd.css';
+
+const slideIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const ChatContents = styled.div`
   display: flex;
@@ -32,6 +44,7 @@ const OthersChatBlock = styled.div`
 `;
 
 const ChatUserName = styled.div`
+  color: white;
   font-size: 13px;
   font-weight: 600;
   margin-left: 0.4rem;
@@ -71,6 +84,7 @@ const ChatMyContents = styled.div`
     position: absolute;
     top: 10px;
     right: -15px;
+    transition: 800ms ease;
   }
 `;
 
@@ -92,10 +106,15 @@ const ChatEnterInform = styled.div`
 `;
 
 const Chatinput = styled(Input.Search)`
+  font-family: 'cookie';
   & button {
     background-color: yellow;
     border: 1px solid yellow;
     color: black;
+    :hover  {
+      color: yellow;
+      background-color: black;
+    }
   }
 `;
 
@@ -138,7 +157,7 @@ const ChatScreen = ({
                 </ChatEnterInform>
               )) || (
                 <ChatEnterInform key={uuidv4()}>
-                  👋 {msg.userName} 마시멜로우가 녹아 없어졌습니다.
+                  👐 {msg.userName} 마시멜로우가 녹아 없어졌습니다.
                 </ChatEnterInform>
               )
             : (curUserName !== msg.userName && (
@@ -190,6 +209,17 @@ const ChatScreen = ({
         enterButton="Send"
         onChange={onChange}
         onPressEnter={() => {
+          if (message.length > 0) {
+            const nowTime = Date.now();
+            const newMsgObj: Message = {} as Message;
+            newMsgObj.enterMsg = false;
+            newMsgObj.userName = userName;
+            newMsgObj.content = message;
+            newMsgObj.timeStamp = nowTime;
+            onRegisterNewMsg(newMsgObj);
+          }
+        }}
+        onSearch={() => {
           if (message.length > 0) {
             const nowTime = Date.now();
             const newMsgObj: Message = {} as Message;
