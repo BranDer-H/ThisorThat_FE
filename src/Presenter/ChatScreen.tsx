@@ -1,122 +1,23 @@
 import React, { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
-import styled, { keyframes } from 'styled-components';
+import { Avatar } from 'antd';
 import { v4 as uuidv4 } from 'uuid';
-import 'moment/locale/ko';
-import { Input, Avatar } from 'antd';
+import {
+  ChatContents,
+  ChatEnterInform,
+  ChatMyContents,
+  ChatTime,
+  ChatUserContents,
+  ChatUserName,
+  Chatinput,
+  MyChatBlock,
+  OthersChatBlock,
+} from '../style/chatStyle';
 import { ChatProps, Message } from '../interface/types';
 
 import { userNickname } from '../atom/Atoms';
 
 import 'antd/dist/antd.css';
-
-const slideIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
-
-const ChatContents = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 2.5rem;
-`;
-
-const MyChatBlock = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  font-family: 'cookie';
-  font-size: 18px;
-  margin-bottom: 0.5rem;
-`;
-
-const OthersChatBlock = styled.div`
-  display: flex;
-  font-family: 'cookie';
-  font-size: 18px;
-  margin-bottom: 0.5rem;
-`;
-
-const ChatUserName = styled.div`
-  color: white;
-  font-size: 13px;
-  font-weight: 600;
-  margin-left: 0.4rem;
-  margin-bottom: 0.2rem;
-`;
-
-const ChatUserContents = styled.div`
-  position: relative;
-  padding: 0.5rem 1rem;
-  margin-left: 1.3rem;
-  background: slategray;
-  border-radius: 10px;
-  &:after {
-    border-top: 10px solid slategray;
-    border-left: 15px solid transparent;
-    border-right: 0px solid transparent;
-    border-bottom: 0px solid transparent;
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: -15px;
-  }
-`;
-
-const ChatMyContents = styled.div`
-  position: relative;
-  padding: 0.5rem 1rem;
-  margin: 0 1.3rem 0 0.8rem;
-  background: slategray;
-  border-radius: 10px;
-  &:after {
-    border-top: 10px solid slategray;
-    border-left: 0px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 0px solid transparent;
-    content: '';
-    position: absolute;
-    top: 10px;
-    right: -15px;
-    transition: 800ms ease;
-  }
-`;
-
-const ChatTime = styled.time`
-  margin: 1.55rem 0 0 0.5rem;
-  justify-content: center;
-  font-size: 14px;
-  color: steelblue;
-`;
-
-const ChatEnterInform = styled.div`
-  color: black;
-  font-family: 'cookie';
-  font-weight: 600;
-  background-color: gainsboro;
-  margin: 1rem auto;
-  padding: 0.8rem;
-  border-radius: 30px;
-`;
-
-const Chatinput = styled(Input.Search)`
-  font-family: 'cookie';
-  & button {
-    background-color: yellow;
-    border: 1px solid yellow;
-    color: black;
-    :hover  {
-      color: yellow;
-      background-color: black;
-    }
-  }
-`;
 
 const ChatScreen = ({
   msgHistory,
@@ -153,11 +54,17 @@ const ChatScreen = ({
           msg.informMsg === true
             ? (msg.enterMsg && (
                 <ChatEnterInform key={uuidv4()}>
-                  👋 {msg.userName} 마시멜로우가 꼬챙이에 끼워졌습니다.
+                  <span role="img" aria-label="clap">
+                    👋
+                  </span>{' '}
+                  {msg.userName} 마시멜로우가 꼬챙이에 끼워졌습니다.
                 </ChatEnterInform>
               )) || (
                 <ChatEnterInform key={uuidv4()}>
-                  👐 {msg.userName} 마시멜로우가 녹아 없어졌습니다.
+                  <span role="img" aria-label="wave">
+                    👐
+                  </span>{' '}
+                  {msg.userName} 마시멜로우가 녹아 없어졌습니다.
                 </ChatEnterInform>
               )
             : (curUserName !== msg.userName && (

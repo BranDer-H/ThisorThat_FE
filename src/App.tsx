@@ -18,20 +18,17 @@ const App = () => {
         muted={!videoStart}
         width="100%"
         height="100%"
-        onReady={() => console.log('video ready')}
         onStart={() => {
-          console.log('video start');
           setTimeout(() => {
             setVideoStart(true);
           }, 2000);
         }}
         onPlay={() => {
-          console.log('video play');
           setTimeout(() => {
             setVideoStart(true);
           }, 2000);
         }}
-        onError={() => console.log('video error')}
+        onError={() => console.error('video error')}
         style={{
           transition: '3s ease-in-out',
           overflow: 'hidden',
